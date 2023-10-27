@@ -24,7 +24,6 @@ The config can either be changed through a GUI (using Mod Menu on Fabric or the 
 {
   /* Leave empty to disable the quick connect button
    - default: ""
-   - must match regex: ^((?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$|^[a-zA-Z0-9.-]+)?$
   */
   "ip": "mc.hypixel.net",
   /* - default: 25565
