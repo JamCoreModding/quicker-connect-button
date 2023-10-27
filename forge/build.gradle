@@ -34,10 +34,6 @@ configurations {
 dependencies {
     forge libs.forge
     modApi libs.architectury.forge
-    annotationProcessor libs.mixin.extras.common
-    implementation libs.mixin.extras.common
-    implementation libs.mixin.extras.forge
-    include libs.mixin.extras.forge
     modImplementation libs.jamlib.forge
 
     // Dependency of JamLib
