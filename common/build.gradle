@@ -9,4 +9,5 @@ loom {
 dependencies {
     modImplementation libs.fabric.loader
     modApi libs.architectury.common
+    modImplementation libs.jamlib.common
 }
