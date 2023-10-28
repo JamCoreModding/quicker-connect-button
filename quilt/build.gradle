@@ -48,28 +48,44 @@ dependencies {
 }
 
 if (System.getenv("CURSEFORGE_API_KEY") != null && System.getenv("MODRINTH_API_KEY") != null) {
-// Uncomment these lines and fill in the IDs when ready to publish :)
-//    unifiedPublishing {
-//        project {
-//            displayName = "V${project.version} (Quilt ${project.minecraft_version})"
-//            changelog = rootProject.file("CHANGELOG.md").text
-//            releaseType = project.version.contains("beta") ? "beta" : "release"
-//            gameVersions = [project.minecraft_version]
-//            gameLoaders = ["quilt"]
+    unifiedPublishing {
+        project {
+            displayName = "V${project.version} (Quilt ${project.minecraft_version})"
+            changelog = rootProject.file("CHANGELOG.md").text
+            releaseType = project.version.contains("beta") ? "beta" : "release"
+            gameVersions = [project.minecraft_version]
+            gameLoaders = ["quilt"]
 
-//            mainPublication tasks.remapJar
+            mainPublication tasks.remapJar
 
-//            curseforge {
-//                token = System.getenv("CURSEFORGE_API_KEY")
-//                id = ""
-//            }
+            relations {
+                depends {
+                    curseforge = "qsl"
+                    modrinth = "qsl"
+                }
 
-//            modrinth {
-//                token = System.getenv("MODRINTH_API_KEY")
-//                id = ""
-//            }
-//        }
-//    }
+                depends {
+                    curseforge = "architectury-api"
+                    modrinth = "architectury-api"
+                }
+
+                depends {
+                    curseforge = "jamlib"
+                    modrinth = "jamlib"
+                }
+            }
+
+            curseforge {
+                token = System.getenv("CURSEFORGE_API_KEY")
+                id = "898092"
+            }
+
+            modrinth {
+                token = System.getenv("MODRINTH_API_KEY")
+                id = "1SruaFxM"
+            }
+        }
+    }
 }
 
 processResources {
