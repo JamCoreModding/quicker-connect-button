@@ -5,59 +5,52 @@ plugins {
 
 architectury {
     platformSetupLoomIde()
-    loader("quilt")
+    neoForge()
 }
 
 base {
-    archivesName = "quickerconnectbutton-quilt-${minecraft_version}"
+    archivesName = "quickerconnectbutton-neoforge-${minecraft_version}"
 }
 
 configurations {
     common
-    shadowCommon 
+    shadowCommon
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
-    developmentFabric.extendsFrom common
+    developmentNeoForge.extendsFrom common
 }
 
 repositories {
-    maven { 
-        name = "Quilt"
-        url = "https://maven.quiltmc.org/repository/release/"
+    maven {
+        name = "NeoForge"
+        url = "https://maven.neoforged.net"
     }
 }
 
 dependencies {
-    modImplementation libs.quilt.loader
-    modApi libs.quilted.fabric.api
-    modApi(libs.architectury.fabric) {
-        exclude group: "net.fabricmc"
-        exclude group: "net.fabricmc.fabric-api"
-    }
-    modRuntimeOnly libs.modmenu
-    modImplementation libs.jamlib.quilt
+    neoForge libs.neoforge
+    modApi libs.architectury.neoforge
+    modImplementation libs.jamlib.neoforge
+
+    // Dependency of JamLib
+    forgeRuntimeLibrary "blue.endless:jankson:1.2.3"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionQuilt")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
 }
 
 if (System.getenv("CURSEFORGE_API_KEY") != null && System.getenv("MODRINTH_API_KEY") != null) {
     unifiedPublishing {
         project {
-            displayName = "V${project.version} (Quilt ${project.minecraft_version})"
+            displayName = "V${project.version} (NeoForge ${project.minecraft_version})"
             changelog = rootProject.file("CHANGELOG.md").text
             releaseType = project.version.contains("beta") ? "beta" : "release"
             gameVersions = [project.minecraft_version]
-            gameLoaders = ["quilt"]
+            gameLoaders = ["neoforge"]
 
             mainPublication tasks.remapJar
 
             relations {
-                depends {
-                    curseforge = "qsl"
-                    modrinth = "qsl"
-                }
-
                 depends {
                     curseforge = "architectury-api"
                     modrinth = "architectury-api"
@@ -82,15 +75,8 @@ if (System.getenv("CURSEFORGE_API_KEY") != null && System.getenv("MODRINTH_API_K
     }
 }
 
-processResources {
-    filesMatching("quilt.mod.json") {
-        expand "version": project.version
-    }
-
-    inputs.property "version", project.version
-}
-
 shadowJar {
+    exclude "fabric.mod.json"
     exclude "architectury.common.json"
 
     configurations = [project.configurations.shadowCommon]
@@ -98,7 +84,6 @@ shadowJar {
 }
 
 remapJar {
-    injectAccessWidener = true
     input.set shadowJar.archiveFile
     dependsOn shadowJar
 }
