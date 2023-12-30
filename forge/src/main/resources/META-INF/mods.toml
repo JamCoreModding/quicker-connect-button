@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[49,)"
+loaderVersion = "[47,)"
 license = "MIT"
 issueTrackerURL="https://github.com/JamCoreModding/quicker-connect-button/issues"
 
@@ -17,27 +17,20 @@ Adds a connect button to the main menu for quickly connecting to servers
 [[dependencies.quickerconnectbutton]]
 modId = "forge"
 mandatory = true
-versionRange = "[49,)"
+versionRange = "[47,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.quickerconnectbutton]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20.4,)"
+versionRange = "[1.20,1.21)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.quickerconnectbutton]]
 modId = "architectury"
 mandatory = true
-versionRange = "[11.0.9,)"
-ordering = "AFTER"
-side = "BOTH"
-
-[[dependencies.quickerconnectbutton]]
-modId = "jamlib"
-mandatory = true
-versionRange = "[1.0.3+1.20.4,)"
+versionRange = "[9.1.12,)"
 ordering = "AFTER"
 side = "BOTH"

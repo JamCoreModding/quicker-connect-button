@@ -16,29 +16,22 @@ Adds a connect button to the main menu for quickly connecting to servers
 
 [[dependencies.quickerconnectbutton]]
 modId = "neoforge"
-type = "required"
-versionRange = "[20.4,)"
+mandatory = true
+versionRange = "[20.2,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.quickerconnectbutton]]
 modId = "minecraft"
-type = "required"
-versionRange = "[1.20.4,)"
+mandatory = true
+versionRange = "[1.20.2,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.quickerconnectbutton]]
 modId = "architectury"
-type = "required"
-versionRange = "[11.0.9,)"
-ordering = "AFTER"
-side = "BOTH"
-
-[[dependencies.quickerconnectbutton]]
-modId = "jamlib"
-type = "required"
-versionRange = "[1.0.3+1.20.4,)"
+mandatory = true
+versionRange = "[10.0.17,)"
 ordering = "AFTER"
 side = "BOTH"
 

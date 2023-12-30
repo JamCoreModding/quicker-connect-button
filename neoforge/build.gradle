@@ -9,7 +9,7 @@ architectury {
 }
 
 base {
-    archivesName = "quickerconnectbutton-neoforge"
+    archivesName = "quickerconnectbutton-neoforge-${minecraft_version}"
 }
 
 configurations {

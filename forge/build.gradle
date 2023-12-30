@@ -9,7 +9,7 @@ architectury {
 }
 
 base {
-    archivesName = "quickerconnectbutton-forge"
+    archivesName = "quickerconnectbutton-forge-${minecraft_version}"
 }
 
 loom {

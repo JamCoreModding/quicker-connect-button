@@ -9,7 +9,7 @@ architectury {
 }
 
 base {
-    archivesName = "quickerconnectbutton-quilt"
+    archivesName = "quickerconnectbutton-quilt-${minecraft_version}"
 }
 
 configurations {

@@ -9,8 +9,8 @@ if (System.getenv("GITHUB_TOKEN") != null) {
         token(System.getenv("GITHUB_TOKEN"))
         owner("JamCoreModding")
         repo("quicker-connect-button")
-        tagName("${project.version}")
-        releaseName("V${project.version}")
+        tagName("${project.version}+${project.minecraft_version}")
+        releaseName("V${project.version} [${minecraft_version}]")
         body(project.rootProject.file("CHANGELOG.md").text)
         draft(false)
 
