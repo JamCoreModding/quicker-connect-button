@@ -1,20 +1,8 @@
-# Quicker Connect Button
+<img alt="Quicker Connect Button: Adds a connect button to the main menu for quickly connecting to servers." src="./readme/banner.png" />
 
-<center>
-    <img alt="forge" height="25" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/supported/forge_vector.svg">
-    <img alt="fabric" height="25" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/supported/fabric_vector.svg">
-    <img alt="quilt" height="25" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/supported/quilt_vector.svg">
-</center>
+![Screenshot 1](./readme/screenshot_1.png)
 
-Adds a connect button to the main menu for quickly connecting to servers.
-
-<center>
-
-![Screenshot 1](./screenshot/screenshot_1.png)
-
-![Screenshot 2](./screenshot/screenshot_2.png)
-
-</center>
+![Screenshot 2](./readme/screenshot_2.png)
 
 ## Configuration
 
@@ -46,4 +34,4 @@ The config can either be changed through a GUI (using Mod Menu on Fabric or the 
 }
 ```
 
-<center><a href="https://bisecthosting.com/jamalam"><img src="https://www.bisecthosting.com/partners/custom-banners/982884df-e307-4b8d-b8c2-9f1868a1f13a.webp" height="120"></a></center>
+[![Rent a server with Bisect Hosting: Use Code jamalam to get 25% off](https://www.bisecthosting.com/partners/custom-banners/e0cc6668-0d29-40ff-9820-4d4f5433198a.webp)](https://bisecthosting.com/jamalam)
