@@ -24,21 +24,21 @@ side = "BOTH"
 [[dependencies.quickerconnectbutton]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.20.4,)"
+versionRange = "[${minecraft_version},)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.quickerconnectbutton]]
 modId = "architectury"
 type = "required"
-versionRange = "[11.0.9,)"
+versionRange = "[${architectury_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.quickerconnectbutton]]
 modId = "jamlib"
 type = "required"
-versionRange = "[1.0.3+1.20.4,)"
+versionRange = "[${jamlib_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
