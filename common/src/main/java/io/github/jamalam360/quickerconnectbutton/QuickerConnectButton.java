@@ -1,5 +1,6 @@
 package io.github.jamalam360.quickerconnectbutton;
 
+import io.github.jamalam360.jamlib.JamLib;
 import io.github.jamalam360.jamlib.JamLibPlatform;
 import io.github.jamalam360.jamlib.config.ConfigManager;
 import net.minecraft.client.multiplayer.ServerData;
@@ -15,6 +16,7 @@ public class QuickerConnectButton {
 
 	public static void init() {
 		LOGGER.info("Loading Quicker Connect Button on " + JamLibPlatform.getPlatform().name());
+		JamLib.checkForJarRenaming(QuickerConnectButton.class);
 	}
 
 	public static ServerData createServerData() {
