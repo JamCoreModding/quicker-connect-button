@@ -40,7 +40,7 @@ public class Config implements ConfigExtensions<Config> {
 	@Override
 	public List<Link> getLinks() {
 		return List.of(
-				new Link(Link.DISCORD, "https://jamalam.tech/Discord", Component.translatable("config.quickerconnectbutton.discord")),
+				new Link(Link.DISCORD, "https://jamalam.tech/discord", Component.translatable("config.quickerconnectbutton.discord")),
 				new Link(Link.GITHUB, "https://github.com/JamCoreModding/quicker-connect-button", Component.translatable("config.quickerconnectbutton.github")),
 				new Link(Link.GENERIC_LINK, "https://modrinth.com/mod/quicker-connect-button", Component.translatable("config.quickerconnectbutton.modrinth"))
 		);
