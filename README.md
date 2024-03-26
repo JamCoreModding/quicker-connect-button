@@ -4,6 +4,8 @@
 
 ![Screenshot 2](./readme/screenshot_2.png)
 
+Download on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/quicker-connect-button) or [Modrinth](https://modrinth.com/mod/quicker-connect-button).
+
 ## Configuration
 
 The config can either be changed through a GUI (using Mod Menu on Fabric or the config button on Forge), or directly at `config/quickerconnectbutton.json5`. The GUI contains tooltips explaining each option.

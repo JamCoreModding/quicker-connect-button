@@ -81,6 +81,7 @@ allprojects {
     }
     
     tasks.publish {
+        dependsOn("clean")
         dependsOn("githubRelease")
         dependsOn("fabric:publishUnified")
         dependsOn("quilt:publishUnified")

@@ -1,2 +1,2 @@
-- Support NeoForge.
-- 1.20.4 will come soon.
+- Icon update.
+- Fix #1: allow setting the behaviour when the server has a resource pack (`resourcePackBehaviour` config option).
