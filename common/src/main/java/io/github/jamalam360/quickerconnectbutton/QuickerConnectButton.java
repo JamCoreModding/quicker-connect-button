@@ -18,6 +18,8 @@ public class QuickerConnectButton {
 	}
 
 	public static ServerData createServerData() {
-		return new ServerData(I18n.get("selectServer.defaultName"), CONFIG.get().ip + ":" + CONFIG.get().port, ServerData.Type.OTHER);
+		ServerData data = new ServerData(I18n.get("selectServer.defaultName"), CONFIG.get().ip + ":" + CONFIG.get().port, ServerData.Type.OTHER);
+		data.setResourcePackStatus(CONFIG.get().resourcePackBehaviour);
+		return data;
 	}
 }

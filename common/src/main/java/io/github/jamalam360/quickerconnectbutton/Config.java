@@ -5,6 +5,7 @@ import io.github.jamalam360.jamlib.config.ConfigExtensions;
 import io.github.jamalam360.jamlib.config.ConfigManager;
 import io.github.jamalam360.jamlib.config.MatchesRegex;
 import io.github.jamalam360.jamlib.config.WithinRange;
+import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.network.chat.Component;
 
 import java.util.List;
@@ -16,8 +17,13 @@ public class Config implements ConfigExtensions<Config> {
 	public String ip = "";
 	@WithinRange(min = 0, max = 65535)
 	public int port = 25565;
+	@Comment("Whether to replace the default multiplayer button on the main menu, or add a new one to its right.")
 	public boolean replaceMultiplayerButton = false;
+	@Comment("The text to display on the button. Leave empty to use \"Connect\".")
 	public String text = "";
+	@Comment("What to do if the server has a resource pack.")
+	public ServerData.ServerPackStatus resourcePackBehaviour = ServerData.ServerPackStatus.PROMPT;
+
 
 	public boolean enabled() {
 		return this.ip != null && !this.ip.equals("");
