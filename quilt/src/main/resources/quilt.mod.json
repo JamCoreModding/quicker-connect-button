@@ -20,7 +20,7 @@
     },
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
-      "init": ["io.github.jamalam360.quickerconnectbutton.quilt.QuickerConnectButtonQuilt"]
+      "client_init": ["io.github.jamalam360.quickerconnectbutton.quilt.QuickerConnectButtonQuilt"]
     },
     "depends": [
       {

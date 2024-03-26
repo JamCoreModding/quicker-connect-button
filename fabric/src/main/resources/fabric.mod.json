@@ -16,7 +16,7 @@
     "icon": "assets/quickerconnectbutton/icon.png",
     "environment": "client",
     "entrypoints": {
-        "main": [
+        "client": [
             "io.github.jamalam360.quickerconnectbutton.fabric.QuickerConnectButtonFabric"
         ]
     },
