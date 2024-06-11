@@ -1,8 +1,8 @@
-<img alt="Quicker Connect Button: Adds a connect button to the main menu for quickly connecting to servers." src="./readme/banner.png" />
+<img alt="Quicker Connect Button: Adds a connect button to the main menu for quickly connecting to servers." src="https://cdn.jamalam.tech/mod-assets/quicker-connect-button-banner.png" />
 
-![Screenshot 1](./readme/screenshot_1.png)
+![Screenshot 1](https://cdn.jamalam.tech/mod-assets/quicker-connect-button-screenshot-1.png)
 
-![Screenshot 2](./readme/screenshot_2.png)
+![Screenshot 2](https://cdn.jamalam.tech/mod-assets/quicker-connect-button-screenshot-2.png)
 
 Download on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/quicker-connect-button) or [Modrinth](https://modrinth.com/mod/quicker-connect-button).
 
@@ -20,10 +20,11 @@ The config can either be changed through a GUI (using Mod Menu on Fabric or the 
      - must be between 0.0 and 65535.0
   */
   port: 25565,
-  /* Whether to replace the default multiplayer button on the main menu, or add a new one to its right.
-     - default: false
+  /* Where to place the connect button
+     - default: RIGHT
+     - must be one of: RIGHT, REPLACE_MULTIPLAYER_BUTTON, REPLACE_SINGLEPLAYER_BUTTON, REPLACE_REALMS_BUTTON
   */
-  replaceMultiplayerButton: true,
+  buttonLocation: "REPLACE_MULTIPLAYER_BUTTON",
   /* The text to display on the button. Leave empty to use "Connect".
      - default: \"\"
   */
