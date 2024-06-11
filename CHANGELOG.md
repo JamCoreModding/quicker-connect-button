@@ -1,2 +1,1 @@
-- Icon update.
-- Fix #1: allow setting the behaviour when the server has a resource pack (`resourcePackBehaviour` config option).
+- Add `buttonLocation` config.
