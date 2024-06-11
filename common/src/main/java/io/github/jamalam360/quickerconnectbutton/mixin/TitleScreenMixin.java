@@ -1,5 +1,6 @@
 package io.github.jamalam360.quickerconnectbutton.mixin;
 
+import dev.architectury.platform.Platform;
 import io.github.jamalam360.quickerconnectbutton.Config.ButtonLocation;
 import io.github.jamalam360.quickerconnectbutton.QuickerConnectButton;
 import java.util.Objects;
@@ -26,6 +27,18 @@ public class TitleScreenMixin extends Screen {
 
     protected TitleScreenMixin(Component component) {
         super(component);
+    }
+
+    @Inject(
+          method = "init",
+          at = @At("HEAD")
+    )
+    private void quickerconnectbutton$init(CallbackInfo ci) {
+        if (Platform.isModLoaded("modmenu") && QuickerConnectButton.CONFIG.get().getButtonLocation() == ButtonLocation.REPLACE_REALMS_BUTTON) {
+            QuickerConnectButton.LOGGER.warn("ModMenu is installed, but the button location is set to REPLACE_REALMS_BUTTON. This will not work. Defaulting to RIGHT.");
+            QuickerConnectButton.CONFIG.get().buttonLocation = ButtonLocation.RIGHT;
+            QuickerConnectButton.CONFIG.save();
+        }
     }
 
     @Inject(

@@ -1,2 +1,1 @@
-- Update to 1.20.6
-- Add more options for where the button is placed (#4)
+- Fix an issue with 2.2.0
