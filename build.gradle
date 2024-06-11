@@ -1,6 +1,6 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.5-SNAPSHOT" apply false
+    id "dev.architectury.loom" version "1.6-SNAPSHOT" apply false
     id "com.github.breadmoirai.github-release" version "2.4.1"
 }
 
@@ -55,6 +55,10 @@ allprojects {
     version = rootProject.version
     group = rootProject.group
 
+    base {
+        archivesName = "quickerconnectbutton"
+    }
+
     repositories {
         mavenCentral()
 
@@ -71,7 +75,7 @@ allprojects {
 
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
-        options.release = 17
+        options.release = 21
     }
 
     tasks.create("prepareWorkspace") {}
@@ -84,8 +88,6 @@ allprojects {
         dependsOn("clean")
         dependsOn("githubRelease")
         dependsOn("fabric:publishUnified")
-        dependsOn("quilt:publishUnified")
-        dependsOn("forge:publishUnified")
         dependsOn("neoforge:publishUnified")
     }
 }
