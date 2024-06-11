@@ -1,1 +1,2 @@
-Update to 1.20.6
+- Update to 1.20.6
+- Add more options for where the button is placed (#4)
