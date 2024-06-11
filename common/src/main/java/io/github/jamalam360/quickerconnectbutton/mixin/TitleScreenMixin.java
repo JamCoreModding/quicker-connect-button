@@ -1,5 +1,6 @@
 package io.github.jamalam360.quickerconnectbutton.mixin;
 
+import io.github.jamalam360.quickerconnectbutton.Config.ButtonLocation;
 import io.github.jamalam360.quickerconnectbutton.QuickerConnectButton;
 import java.util.Objects;
 import net.minecraft.client.gui.components.Button;
@@ -12,6 +13,7 @@ import net.minecraft.client.multiplayer.resolver.ServerAddress;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
@@ -31,8 +33,8 @@ public class TitleScreenMixin extends Screen {
           at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/TitleScreen;addRenderableWidget(Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener;", ordinal = 1, shift = At.Shift.BEFORE),
           locals = LocalCapture.CAPTURE_FAILHARD
     )
-    private void quickerconnectbutton$injectCustomButton(int a, int b, CallbackInfo info, Component multiplayerDisabledReason, boolean multiplayerDisabled, Tooltip multiplayerDisabledTooltip) {
-        if (QuickerConnectButton.CONFIG.get().enabled() && !QuickerConnectButton.CONFIG.get().replaceMultiplayerButton) {
+    private void quickerconnectbutton$buttonRight(int a, int b, CallbackInfo info, Component multiplayerDisabledReason, boolean multiplayerDisabled, Tooltip multiplayerDisabledTooltip) {
+        if (QuickerConnectButton.CONFIG.get().enabled() && QuickerConnectButton.CONFIG.get().getButtonLocation() == ButtonLocation.RIGHT) {
             Component text = QuickerConnectButton.CONFIG.get().getButtonText();
             int width = Mth.clamp(Objects.requireNonNull(this.minecraft).font.width(text), 50, this.width - (this.width / 2 + 108));
 
@@ -45,15 +47,40 @@ public class TitleScreenMixin extends Screen {
 
     @ModifyArgs(
           method = "createNormalMenuOptions",
+          at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/components/Button;builder(Lnet/minecraft/network/chat/Component;Lnet/minecraft/client/gui/components/Button$OnPress;)Lnet/minecraft/client/gui/components/Button$Builder;", ordinal = 0)
+    )
+    private void quickerconnectbutton$buttonSingleplayer(Args args) {
+        if (QuickerConnectButton.CONFIG.get().getButtonLocation() == ButtonLocation.REPLACE_SINGLEPLAYER_BUTTON) {
+            this.quickerconnectbutton$replaceButton(args);
+        }
+    }
+
+    @ModifyArgs(
+          method = "createNormalMenuOptions",
           at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/components/Button;builder(Lnet/minecraft/network/chat/Component;Lnet/minecraft/client/gui/components/Button$OnPress;)Lnet/minecraft/client/gui/components/Button$Builder;", ordinal = 1)
     )
-    private void quickerconnectbutton$modifyMultiplayerButton(Args args) {
-        if (QuickerConnectButton.CONFIG.get().replaceMultiplayerButton) {
-            args.set(0, QuickerConnectButton.CONFIG.get().getButtonText());
-            args.<Button.OnPress>set(1, (button) -> {
-                ServerData data = QuickerConnectButton.createServerData();
-                ConnectScreen.startConnecting(this, Objects.requireNonNull(this.minecraft), ServerAddress.parseString(data.ip), data, false, null);
-            });
+    private void quickerconnectbutton$buttonMultiplayer(Args args) {
+        if (QuickerConnectButton.CONFIG.get().getButtonLocation() == ButtonLocation.REPLACE_MULTIPLAYER_BUTTON) {
+            this.quickerconnectbutton$replaceButton(args);
         }
+    }
+
+    @ModifyArgs(
+          method = "createNormalMenuOptions",
+          at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/components/Button;builder(Lnet/minecraft/network/chat/Component;Lnet/minecraft/client/gui/components/Button$OnPress;)Lnet/minecraft/client/gui/components/Button$Builder;", ordinal = 2)
+    )
+    private void quickerconnectbutton$buttonRealms(Args args) {
+        if (QuickerConnectButton.CONFIG.get().getButtonLocation() == ButtonLocation.REPLACE_REALMS_BUTTON) {
+            this.quickerconnectbutton$replaceButton(args);
+        }
+    }
+
+    @Unique
+    private void quickerconnectbutton$replaceButton(Args args) {
+        args.set(0, QuickerConnectButton.CONFIG.get().getButtonText());
+        args.<Button.OnPress>set(1, (button) -> {
+            ServerData data = QuickerConnectButton.createServerData();
+            ConnectScreen.startConnecting(this, Objects.requireNonNull(this.minecraft), ServerAddress.parseString(data.ip), data, false, null);
+        });
     }
 }
